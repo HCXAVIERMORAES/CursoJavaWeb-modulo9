@@ -1,10 +1,10 @@
 package cursojava.classes;
 
 public class Aluno {
-	//Atributos
-		String nome;
-		int idade;
-		String dataNascimento;
+	//Atributos do Aluno, ou seja , as caracteristicas do aluno no mundo real
+		public String nome; //para acesso direto por outras classes
+		public int idade;
+		private String dataNascimento; //atributo protegido, acessado apenas por metodos e pela propria classe
 		String registroGeral;
 		String numeroCpf;
 		String nomeMae;
