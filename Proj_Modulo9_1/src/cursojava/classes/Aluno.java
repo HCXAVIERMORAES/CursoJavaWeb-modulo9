@@ -168,5 +168,75 @@ public class Aluno {
 			return (nota1 + nota2 + nota3 + nota4)/ 4;
 		}
 		
+		//método para dizer se um aluno esta ou não aprovado, logo , um boolean - sim ou não.
+		/*O operador this significa que vamos fazer uma chamada para algum método ou variável
+		 * dentro do próprio objeto*/
+		//mais usado em sistemas pois fica mais facil de manipular devido ao retorno, true/false
+		public boolean getAlunoAprovado() {
+			double media = this.getMediaNota();
+			if(media >= 70) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		//mesmo método,porém retornando strings é menos usado
+		public String getAlunoAprovado2() {
+			double media = this.getMediaNota();
+			if(media >= 70) {
+				return "Aluno aprovado";
+			} else {
+				return "Aluno reprovado";
+			}
+		}
+		
+		//toString
+		@Override
+		public String toString() {
+			return "Aluno [nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento
+					+ ", registroGeral=" + registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae
+					+ ", nomePai=" + nomePai + ", dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola
+					+ ", serieMatriculada=" + serieMatriculada + ", nota1=" + nota1 + ", nota2=" + nota2 + ", nota3="
+					+ nota3 + ", nota4=" + nota4 + "]";
+		}
+		
+		//metodo eguals e hashcode
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+			result = prime * result + ((numeroCpf == null) ? 0 : numeroCpf.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Aluno other = (Aluno) obj;
+			if (nome == null) {
+				if (other.nome != null)
+					return false;
+			} else if (!nome.equals(other.nome))
+				return false;
+			if (numeroCpf == null) {
+				if (other.numeroCpf != null)
+					return false;
+			} else if (!numeroCpf.equals(other.numeroCpf))
+				return false;
+			return true;
+		}
+		
+		
+		
+		
+		
+		
 		
 }
