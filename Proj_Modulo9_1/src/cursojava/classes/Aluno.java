@@ -1,242 +1,246 @@
 package cursojava.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Aluno {
-	//Atributos do Aluno, ou seja , as caracteristicas do aluno no mundo real
-		//public String nome; //para acesso direto por outras classes
-		private String nome;//padrão para proteger a variavel de acesso direto
-		private int idade;
-		private String dataNascimento; //atributo protegido, acessado apenas por metodos e pela propria classe
-		private String registroGeral;
-		private String numeroCpf;
-		private String nomeMae;
-		private String nomePai;
-		private String dataMatricula;
-		private String nomeEscola;
-		private String serieMatriculada;
-		
-		//atributos para calculo de média
-		private double nota1;
-		private double nota2;
-		private double nota3;
-		private double nota4;
-		
-		//gets e sets para media		
-		public double getNota1() {
-			return nota1;
-		}
+	// Atributos do Aluno, ou seja , as caracteristicas do aluno no mundo real
+	// public String nome; //para acesso direto por outras classes
+	private String nome;// padrão para proteger a variavel de acesso direto
+	private int idade;
+	private String dataNascimento; // atributo protegido, acessado apenas por metodos e pela propria classe
+	private String registroGeral;
+	private String numeroCpf;
+	private String nomeMae;
+	private String nomePai;
+	private String dataMatricula;
+	private String nomeEscola;
+	private String serieMatriculada;
 
-		public void setNota1(double nota1) {
-			this.nota1 = nota1;
-		}
+	/*
+	 * relacionando disciplina e aluno e com isso consegue-se arrumar o metodo de
+	 * media present nessa classe
+	 */
 
-		public double getNota2() {
-			return nota2;
-		}
+	/*
+	 * não será mais usado devido ao acrescimo do list na classe disciplina,
+	 * ficando: Disciplina disciplina = new Disciplina();
+	 * 
+	 * //get e set disciplina public void setDisciplina(Disciplina disciplina) {
+	 * this.disciplina = disciplina; }
+	 * 
+	 * public Disciplina getDisciplina() { return disciplina; }
+	 */
 
-		public void setNota2(double nota2) {
-			this.nota2 = nota2;
-		}
+	// usando a lista da classe Disciplina, ficando entre '<>'
+	List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
-		public double getNota3() {
-			return nota3;
-		}
+	// set e get da lista de disciplina
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
+	}
 
-		public void setNota3(double nota3) {
-			this.nota3 = nota3;
-		}
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
+	}
 
-		public double getNota4() {
-			return nota4;
-		}
+	// construtores Aluno aluno4 = new Aluno();
+	/* é o mesmo que estar referenciando um construtor no java */
+	public Aluno() {// construtor padrão do java - cria os dados na memoria
+	}
 
-		public void setNota4(double nota4) {
-			this.nota4 = nota4;
-		}
+	// construtor que recebe paramentro
+	public Aluno(String nomePadrao) {// assim se pode inicar os objetos passando o nome
+		nome = nomePadrao;
+	}
 
-		//construtores Aluno aluno4 = new Aluno();
-		/*é o mesmo que estar referenciando um construtor no java*/
-		public Aluno() {//construtor padrão do java - cria os dados na memoria		
-		}
-		
-		//construtor que recebe paramentro
-		public Aluno(String nomePadrao) {// assim se pode inicar os objetos passando o nome
-			nome = nomePadrao;
-		}
-		
-		public Aluno(String nomePadrao,int idadePadrao) {// assim se pode inicar os objetos passando o nome
-			nome = nomePadrao;
-			idade = idadePadrao;
-		}
-		
-		//GET e SET		
-		/*Métodos SETTERS e GETTERS do objeto, onde o SET é para adicionar ou receber dados 
-		 * para os atributos e GET é para resgatar ou obter o valor/dado do atributo. Todos os 
-		 * objetos em java tem.
-		 * public porque tem que ser acessado de qualquer lugar
-		 * void porque ele não vai retornar só vai receber valor
-		 * this (este) se refere a classe, nome ao atributo, e string nome a variavel que 
-		 * receberá  o dado*/
-		
-		//metodo para receber dado
-		public void setNome (String nome) {
-			this.nome = nome;
-		}
-		
-		/*O GET é similar ao set pois é publico para ser acessado, deve conter o tipo de dado
-		 * retornado (String- texto-, int- intreiro-, etc) a palavra GET seguido da variavel
-		 * com inicial maiuscula, o que se deseja retornar com a palavra 'return' seguida da
-		 * variavel */
-		//metodo que retorna (return) o dado
-		public String getNome() {
-			return nome;
-		}
+	public Aluno(String nomePadrao, int idadePadrao) {// assim se pode inicar os objetos passando o nome
+		nome = nomePadrao;
+		idade = idadePadrao;
+	}
 
-		public int getIdade() {
-			return idade;
-		}
+	// GET e SET
+	/*
+	 * Métodos SETTERS e GETTERS do objeto, onde o SET é para adicionar ou receber
+	 * dados para os atributos e GET é para resgatar ou obter o valor/dado do
+	 * atributo. Todos os objetos em java tem. public porque tem que ser acessado de
+	 * qualquer lugar void porque ele não vai retornar só vai receber valor this
+	 * (este) se refere a classe, nome ao atributo, e string nome a variavel que
+	 * receberá o dado
+	 */
 
-		public void setIdade(int idade) {
-			this.idade = idade;
-		}
+	// metodo para receber dado
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-		public String getDataNascimento() {
-			return dataNascimento;
-		}
+	/*
+	 * O GET é similar ao set pois é publico para ser acessado, deve conter o tipo
+	 * de dado retornado (String- texto-, int- intreiro-, etc) a palavra GET seguido
+	 * da variavel com inicial maiuscula, o que se deseja retornar com a palavra
+	 * 'return' seguida da variavel
+	 */
+	// metodo que retorna (return) o dado
+	public String getNome() {
+		return nome;
+	}
 
-		public void setDataNascimento(String dataNascimento) {
-			this.dataNascimento = dataNascimento;
-		}
+	public int getIdade() {
+		return idade;
+	}
 
-		public String getRegistroGeral() {
-			return registroGeral;
-		}
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
 
-		public void setRegistroGeral(String registroGeral) {
-			this.registroGeral = registroGeral;
-		}
+	public String getDataNascimento() {
+		return dataNascimento;
+	}
 
-		public String getNumeroCpf() {
-			return numeroCpf;
-		}
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
 
-		public void setNumeroCpf(String numeroCpf) {
-			this.numeroCpf = numeroCpf;
-		}
+	public String getRegistroGeral() {
+		return registroGeral;
+	}
 
-		public String getNomeMae() {
-			return nomeMae;
-		}
+	public void setRegistroGeral(String registroGeral) {
+		this.registroGeral = registroGeral;
+	}
 
-		public void setNomeMae(String nomeMae) {
-			this.nomeMae = nomeMae;
-		}
+	public String getNumeroCpf() {
+		return numeroCpf;
+	}
 
-		public String getNomePai() {
-			return nomePai;
-		}
+	public void setNumeroCpf(String numeroCpf) {
+		this.numeroCpf = numeroCpf;
+	}
 
-		public void setNomePai(String nomePai) {
-			this.nomePai = nomePai;
-		}
+	public String getNomeMae() {
+		return nomeMae;
+	}
 
-		public String getDataMatricula() {
-			return dataMatricula;
-		}
+	public void setNomeMae(String nomeMae) {
+		this.nomeMae = nomeMae;
+	}
 
-		public void setDataMatricula(String dataMatricula) {
-			this.dataMatricula = dataMatricula;
-		}
+	public String getNomePai() {
+		return nomePai;
+	}
 
-		public String getNomeEscola() {
-			return nomeEscola;
-		}
+	public void setNomePai(String nomePai) {
+		this.nomePai = nomePai;
+	}
 
-		public void setNomeEscola(String nomeEscola) {
-			this.nomeEscola = nomeEscola;
-		}
+	public String getDataMatricula() {
+		return dataMatricula;
+	}
 
-		public String getSerieMatriculada() {
-			return serieMatriculada;
-		}
+	public void setDataMatricula(String dataMatricula) {
+		this.dataMatricula = dataMatricula;
+	}
 
-		public void setSerieMatriculada(String serieMatriculada) {
-			this.serieMatriculada = serieMatriculada;
-		}
-		
-		//Método que retorna a media do aluno
-		public double getMediaNota() {
-			return (nota1 + nota2 + nota3 + nota4)/ 4;
-		}
-		
-		//método para dizer se um aluno esta ou não aprovado, logo , um boolean - sim ou não.
-		/*O operador this significa que vamos fazer uma chamada para algum método ou variável
-		 * dentro do próprio objeto*/
-		//mais usado em sistemas pois fica mais facil de manipular devido ao retorno, true/false
-		public boolean getAlunoAprovado() {
-			double media = this.getMediaNota();
-			if(media >= 70) {
-				return true;
-			}else {
-				return false;
-			}
-		}
-		
-		//mesmo método,porém retornando strings é menos usado
-		public String getAlunoAprovado2() {
-			double media = this.getMediaNota();
-			if(media >= 70) {
-				return "Aluno aprovado";
-			} else {
-				return "Aluno reprovado";
-			}
-		}
-		
-		//toString
-		@Override
-		public String toString() {
-			return "Aluno [nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento
-					+ ", registroGeral=" + registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae
-					+ ", nomePai=" + nomePai + ", dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola
-					+ ", serieMatriculada=" + serieMatriculada + ", nota1=" + nota1 + ", nota2=" + nota2 + ", nota3="
-					+ nota3 + ", nota4=" + nota4 + "]";
-		}
-		
-		//metodo eguals e hashcode
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-			result = prime * result + ((numeroCpf == null) ? 0 : numeroCpf.hashCode());
-			return result;
-		}
+	public String getNomeEscola() {
+		return nomeEscola;
+	}
 
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Aluno other = (Aluno) obj;
-			if (nome == null) {
-				if (other.nome != null)
-					return false;
-			} else if (!nome.equals(other.nome))
-				return false;
-			if (numeroCpf == null) {
-				if (other.numeroCpf != null)
-					return false;
-			} else if (!numeroCpf.equals(other.numeroCpf))
-				return false;
+	public void setNomeEscola(String nomeEscola) {
+		this.nomeEscola = nomeEscola;
+	}
+
+	public String getSerieMatriculada() {
+		return serieMatriculada;
+	}
+
+	public void setSerieMatriculada(String serieMatriculada) {
+		this.serieMatriculada = serieMatriculada;
+	}
+
+	/*
+	 * Método que retorna a media do aluno. public double getMediaNota() { return
+	 * (disciplina.getNota1() + disciplina.getNota2() + disciplina.getNota3() +
+	 * disciplina.getNota4()) / 4; } obsoleto pois agora será uma lista de
+	 * disciplina
+	 */
+
+	// metodo média com lista
+	public double getMediaNota() {
+
+		Double somaNotas = 0.0;
+		// usando um forEacht
+		for (Disciplina disciplina : disciplinas) {
+			somaNotas += disciplina.getNota();
+		}
+		return somaNotas / disciplinas.size();
+	}
+
+	// método para dizer se um aluno esta ou não aprovado, logo , um boolean - sim
+	// ou não.
+	/*
+	 * O operador this significa que vamos fazer uma chamada para algum método ou
+	 * variável dentro do próprio objeto
+	 */
+	// mais usado em sistemas pois fica mais facil de manipular devido ao retorno,
+	// true/false
+	public boolean getAlunoAprovado() {
+		double media = this.getMediaNota();
+		if (media >= 70) {
 			return true;
+		} else {
+			return false;
 		}
-		
-		
-		
-		
-		
-		
-		
+	}
+
+	// mesmo método,porém retornando strings é menos usado
+	public String getAlunoAprovado2() {
+		double media = this.getMediaNota();
+		if (media >= 70) {
+			return "Aluno aprovado";
+		} else {
+			return "Aluno reprovado";
+		}
+	}
+
+	// metodo eguals e hashcode
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((numeroCpf == null) ? 0 : numeroCpf.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aluno other = (Aluno) obj;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (numeroCpf == null) {
+			if (other.numeroCpf != null)
+				return false;
+		} else if (!numeroCpf.equals(other.numeroCpf))
+			return false;
+		return true;
+	}
+
+	// toString. apos a criação de discilina
+	@Override
+	public String toString() {// colocado \n para quebra de linha e substituido '=' por ':'
+		return "Aluno [nome: " + nome + ", idade: " + idade + ", data Nascimento: " + dataNascimento
+				+ ", registro Geral: " + registroGeral + ", numero Cpf: " + numeroCpf + ", \nnome Mae: " + nomeMae
+				+ ", nome Pai: " + nomePai + ", data Matricula: " + dataMatricula + ", nome Escola: " + nomeEscola
+				+ ", serie Matriculada: " + serieMatriculada + "]";
+	}
+
 }
