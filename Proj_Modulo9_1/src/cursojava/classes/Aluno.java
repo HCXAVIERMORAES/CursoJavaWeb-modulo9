@@ -3,6 +3,8 @@ package cursojava.classes;
 import java.util.ArrayList;
 import java.util.List;
 
+import cursojava.constantes.StatusAluno;
+
 public class Aluno {
 	// Atributos do Aluno, ou seja , as caracteristicas do aluno no mundo real
 	// public String nome; //para acesso direto por outras classes
@@ -195,10 +197,15 @@ public class Aluno {
 	// mesmo método,porém retornando strings é menos usado
 	public String getAlunoAprovado2() {
 		double media = this.getMediaNota();
-		if (media >= 70) {
-			return "Aluno aprovado";
+		if (media >= 50) {
+			if (media >= 70) {
+				return StatusAluno.APROVADO;
+			} else {
+				return StatusAluno.RECUPERACAO;
+			}
+
 		} else {
-			return "Aluno reprovado";
+			return StatusAluno.REPROVADO;
 		}
 	}
 
@@ -240,7 +247,7 @@ public class Aluno {
 		return "Aluno [nome: " + nome + ", idade: " + idade + ", data Nascimento: " + dataNascimento
 				+ ", registro Geral: " + registroGeral + ", numero Cpf: " + numeroCpf + ", \nnome Mae: " + nomeMae
 				+ ", nome Pai: " + nomePai + ", data Matricula: " + dataMatricula + ", nome Escola: " + nomeEscola
-				+ ", serie Matriculada: " + serieMatriculada + "]";
+				+ ", serie Matriculada: " + serieMatriculada + ",\n disciplinas: " + disciplinas + "]";
 	}
 
 }

@@ -1,5 +1,8 @@
 package cursojava.executavel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import cursojava.classes.Aluno;
@@ -30,116 +33,230 @@ public class PrimeiraClasseJava {
 		 * showInputDialog("Digite o Registro geral do aluno: "));
 		 */
 
-		String nome = JOptionPane.showInputDialog("Qual o nome do aluno? ");
-		String idade = JOptionPane.showInputDialog("Qual a idade do aluno? ");
-		String dataNascimento = JOptionPane.showInputDialog("Qual a data de nascimento? ");
+		/* Aplicando a lista em aluno */
+		List<Aluno> alunos = new ArrayList<Aluno>();// instanciando lista de alunos
 
-		// criando um objeto real na memoria
-		Aluno aluno1 = new Aluno();// aluno joão.
+		for (int qtd = 1; qtd <= 2; qtd++) { // percorrendo lista de alunos
+
+			String nome = JOptionPane.showInputDialog("Qual o nome do aluno " + qtd + " ? ");
+			// String idade = JOptionPane.showInputDialog("Qual a idade do aluno? ");
+			// String dataNascimento = JOptionPane.showInputDialog("Qual a data de
+			// nascimento? ");
+
+			// criando um objeto real na memoria
+			Aluno aluno1 = new Aluno();// aluno joão.
+			/*
+			 * aluno1.nome = "João";// para atributo public seria assim. Errado aluno1.idade
+			 * = 43;
+			 */
+
+			// correto. Com metodo set e get
+			// dados do aluno joão
+			aluno1.setNome(nome);
+			/*
+			 * aluno1.setIdade(Integer.valueOf(idade));// convertendo String em inteiro -
+			 * int. aluno1.setDataNascimento(dataNascimento); // atributo protegido,
+			 * acessado apenas por metodos e pela propria // classe // passando diretamente
+			 * aluno1.setRegistroGeral(JOptionPane.
+			 * showInputDialog("Digite o Registro geral do aluno: "));
+			 * aluno1.setNumeroCpf(JOptionPane.showInputDialog("Digite o CPF: "));
+			 * aluno1.setNomeMae(JOptionPane.
+			 * showInputDialog("Digite o nome da mãe do aluno: "));
+			 * aluno1.setNomePai(JOptionPane.
+			 * showInputDialog("Digite o nome do pai do aluno: "));
+			 * aluno1.setDataMatricula(JOptionPane.
+			 * showInputDialog("Digite a matrícula do aluno: "));
+			 * aluno1.setNomeEscola(JOptionPane.
+			 * showInputDialog("Digite o nome da escola do aluno: "));
+			 * aluno1.setSerieMatriculada(JOptionPane.
+			 * showInputDialog("Digite a serie do aluno: "));
+			 */
+
+			/* Deixando a lista dinâmica */
+			for (int pos = 1; pos <= 1; pos++) {
+				// pedindo dados da diciplina
+				String nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina " + pos + "?");
+				String notaDisciplina = JOptionPane.showInputDialog("Nota da disciplina " + pos + "?");
+
+				Disciplina disciplina = new Disciplina();// instancia Disciplina
+				disciplina.setDisciplina(nomeDisciplina);// setando em disciplina o nome
+				disciplina.setNota(Double.valueOf(notaDisciplina));// converte d string para
+				// double e seta em disciplina
+
+				// adiciona em aluno1 na lista de disciplinas a disciplina setada
+				aluno1.getDisciplinas().add(disciplina);
+			}
+
+			/* Removendo disciplinas da lista */
+			int escolha = JOptionPane.showConfirmDialog(null, "Deseja remover alguma disciplina ?");
+			// O confirm retorna '0' para sim e '1' para não
+			if (escolha == 0) {
+				/* para continuar a remover disciplina. Usa-se o while */
+				int continuarRemove = 0;
+				int posicao = 1;
+
+				while (continuarRemove == 0) {
+
+					String disciplinaRemover = JOptionPane
+							.showInputDialog("Qual disciplina será removida 1, 2, 3 ou 4 ? ");
+					/*
+					 * (Integer.valueOf(disciplinaRemover)[converte a string em um objeto
+					 * integer].intValue()[ converte o objeto integer em um inteiro para ser usado
+					 * pelo index da lista] e o - posicao[é para que seja feita a conta para se
+					 * adeguar ao index que começa por '0' na lista)
+					 */
+					aluno1.getDisciplinas().remove(Integer.valueOf(disciplinaRemover).intValue() - posicao);// remove da
+					posicao++; // lista
+					continuarRemove = JOptionPane.showConfirmDialog(null, "Deseja continuar a remover disciplina? ");
+
+				}
+			}
+
+			/*
+			 * usando a lista da classe Disciplina , em um meetodo não dinâmico Disciplina
+			 * disciplina1 = new Disciplina();//cria na memoria disciplina1
+			 * disciplina1.setDisciplina("Banco de dados");//nomeia a disciplina1
+			 * disciplina1.setNota(90.0);//acrescenta a nota da disciplina1
+			 * aluno1.getDisciplinas().add(disciplina1);//recupera e adiciona diciplina1 ao
+			 * aluno1
+			 * 
+			 * Disciplina disciplina2 = new Disciplina();
+			 * disciplina2.setDisciplina("Matemática"); disciplina2.setNota(80.0);
+			 * aluno1.getDisciplinas().add(disciplina2);
+			 * 
+			 * Disciplina disciplina3 = new Disciplina();
+			 * disciplina3.setDisciplina("Geografia"); disciplina3.setNota(70.0);
+			 * aluno1.getDisciplinas().add(disciplina3);
+			 * 
+			 * Disciplina disciplina4 = new Disciplina();
+			 * disciplina4.setDisciplina("Java Web"); disciplina4.setNota(70.0);
+			 * aluno1.getDisciplinas().add(disciplina4); /*
+			 * 
+			 * /* notas recebendo valores //e fazendo a conversão de string para double
+			 * aluno1.setDisciplina1(JOptionPane.showInputDialog("Disciplina 1? "));
+			 * aluno1.setNota1(Double.parseDouble(JOptionPane.
+			 * showInputDialog("Digite  nota do aluno: "))); antes de criar a classe
+			 * disciplina
+			 */
+
+			/*
+			 * apos criação da classe disciplina, pega o aluno, resgata, pega a disciplina
+			 * (getDisciplina()) e seta a
+			 * disciplina(setDisciplina1(JOptionPane.showInputDialog("Disciplina 1? "))) e a
+			 * nota (setNota1(Double.parseDouble(JOptionPane.showInputDialog("msg: ")));)
+			 */
+			/*
+			 * como foi gerado uma lista na classe Disciplina esse código fica obsoleto
+			 * aluno1.getDisciplina().setDisciplina1(JOptionPane.
+			 * showInputDialog("Disciplina 1? ")); aluno1.getDisciplina()
+			 * .setNota1(Double.parseDouble(JOptionPane.
+			 * showInputDialog("Digite nota da disciplina1: ")));
+			 * aluno1.getDisciplina().setDisciplina2(JOptionPane.
+			 * showInputDialog("Disciplina 2? ")); aluno1.getDisciplina()
+			 * .setNota2(Double.parseDouble(JOptionPane.
+			 * showInputDialog("Digite nota da disciplina2: ")));
+			 * aluno1.getDisciplina().setDisciplina3(JOptionPane.
+			 * showInputDialog("Disciplina 3? ")); aluno1.getDisciplina()
+			 * .setNota3(Double.parseDouble(JOptionPane.
+			 * showInputDialog("Digite nota da disciplina3: ")));
+			 * aluno1.getDisciplina().setDisciplina4(JOptionPane.
+			 * showInputDialog("Disciplina 4? ")); aluno1.getDisciplina()
+			 * .setNota4(Double.parseDouble(JOptionPane.
+			 * showInputDialog("Digite nota da disciplina4: ")));
+			 */
+
+			// mostrando os dados de João
+			/*
+			 * System.out.println("O nome é: "+ aluno1.getNome());//o get não se usa em
+			 * qualquer lugar System.out.println("A idade é: "+ aluno1.getIdade());// apena
+			 * para recuperar o dado System.out.println("A data de nascimento é: "+
+			 * aluno1.getDataNascimento()); System.out.println("O RG é: "+
+			 * aluno1.getRegistroGeral()); System.out.println("O CPF é: "+
+			 * aluno1.getNumeroCpf()); System.out.println("O nome da mãe é: "+
+			 * aluno1.getNomeMae()); System.out.println("O nome do pai é: "+
+			 * aluno1.getNomePai()); System.out.println("A matricula é: "+
+			 * aluno1.getDataMatricula()); System.out.println("O nome da escola é: "+
+			 * aluno1.getNomeEscola()); System.out.println("A serie matriculada é: "+
+			 * aluno1.getSerieMatriculada()); //mostrando media com 2 casas decimais no
+			 * printf onde % é um coringa onde entra a variavel
+			 * System.out.printf("A média das notas são: %.2f \n", aluno1.getMediaNota());
+			 */
+			// adicionando a lista de alunos
+			alunos.add(aluno1);
+
+		} // fim for lista aluno
+
+		// varrendo alista de alunos
 		/*
-		 * aluno1.nome = "João";// para atributo public seria assim. Errado aluno1.idade
-		 * = 43;
+		 * for (Aluno aluno : alunos) { //procurando um nome na lista e dadndo as
+		 * informações if (aluno.getNome().equalsIgnoreCase("Alex")) {
+		 * System.out.println(aluno);// descrição do objeto na memoria
+		 * System.out.println("A média do aluno é: " + aluno.getMediaNota());
+		 * System.out.println("resultado: " + aluno.getAlunoAprovado2());
+		 * System.out.println("======================== FIM aluno " + aluno.getNome() +
+		 * " ===================================="); break; } }
+		 */
+		/*
+		 * // removendo aluno na lista for (Aluno aluno : alunos) { if
+		 * (aluno.getNome().equalsIgnoreCase("Alex")) { alunos.remove(aluno); break; }
+		 * else { System.out.println(aluno);// descrição do objeto na memoria
+		 * System.out.println("A média do aluno é: " + aluno.getMediaNota());
+		 * System.out.println("resultado: " + aluno.getAlunoAprovado2());
+		 * System.out.println("======================== FIM aluno " + aluno.getNome() +
+		 * " ===================================="); } }
+		 * 
+		 * // imprimindo os alunos que sobrarm na lista for (Aluno aluno : alunos)
+		 * {//lista de aluno System.out.println("Aluno(s) que sobra(m): ");
+		 * System.out.println(aluno.getNome());
+		 * System.out.println("Materias do aluno: ");
+		 * 
+		 * for (Disciplina disciplina : aluno.getDisciplinas()) {//na disciplina pegar
+		 * as disciplinas do aluno System.out.println(disciplina.getDisciplina()); } }
 		 */
 
-		// correto. Com metodo set e get
-		// dados do aluno joão
-		aluno1.setNome(nome);
-		aluno1.setIdade(Integer.valueOf(idade));// convertendo String em inteiro - int.
-		aluno1.setDataNascimento(dataNascimento); // atributo protegido, acessado apenas por metodos e pela propria
-													// classe
-		// passando diretamente
-		aluno1.setRegistroGeral(JOptionPane.showInputDialog("Digite o Registro geral do aluno: "));
-		aluno1.setNumeroCpf(JOptionPane.showInputDialog("Digite o CPF: "));
-		aluno1.setNomeMae(JOptionPane.showInputDialog("Digite o nome da mãe do aluno: "));
-		aluno1.setNomePai(JOptionPane.showInputDialog("Digite o nome do pai do aluno: "));
-		aluno1.setDataMatricula(JOptionPane.showInputDialog("Digite a matrícula do aluno: "));
-		aluno1.setNomeEscola(JOptionPane.showInputDialog("Digite o nome da escola do aluno: "));
-		aluno1.setSerieMatriculada(JOptionPane.showInputDialog("Digite a serie do aluno: "));
-		
-		/*usando a lista da classe Disciplina */
-		Disciplina disciplina1 = new Disciplina();//cria na memoria disciplina1
-		disciplina1.setDisciplina("Banco de dados");//nomeia a disciplina1
-		disciplina1.setNota(90.0);//acrescenta a nota da disciplina1
-		aluno1.getDisciplinas().add(disciplina1);//recupera e adiciona diciplina1 ao aluno1
-		
-		Disciplina disciplina2 = new Disciplina();
-		disciplina2.setDisciplina("Matemática");
-		disciplina2.setNota(80.0);
-		aluno1.getDisciplinas().add(disciplina2);
-		
-		Disciplina disciplina3 = new Disciplina();
-		disciplina3.setDisciplina("Geografia");
-		disciplina3.setNota(70.0);
-		aluno1.getDisciplinas().add(disciplina3);
-		
-		Disciplina disciplina4 = new Disciplina();
-		disciplina4.setDisciplina("Java Web");
-		disciplina4.setNota(70.0);
-		aluno1.getDisciplinas().add(disciplina4);
-		
-		/*
-		 * notas recebendo valores //e fazendo a conversão de string para double
-		 * aluno1.setDisciplina1(JOptionPane.showInputDialog("Disciplina 1? "));
-		 * aluno1.setNota1(Double.parseDouble(JOptionPane.
-		 * showInputDialog("Digite  nota do aluno: "))); antes de criar a classe
-		 * disciplina
-		 */
+		// percorrendo lista por posiçoes
+		for (int pos = 0; pos < alunos.size(); pos++) {
+			Aluno aluno = alunos.get(pos);
+
+			// fazendo troca de aluno por index
+			if (aluno.getNome().equalsIgnoreCase("alex")) {
+				// instancia-se um novo aluno
+				Aluno trocar = new Aluno();
+				trocar.setNome("aluno foi trocado");// troca-se todos os campos pois é um novo aluno
+
+				Disciplina disciplina = new Disciplina();// instancia-se uma nova disciplina
+				disciplina.setDisciplina("Matematica");
+				disciplina.setNota(96.0);
+
+				// adicionando a disciplina trocada na lista de disciplina
+				trocar.getDisciplinas().add(disciplina);
+
+				// adicionando o aluno trocado
+				alunos.set(pos, trocar);
+				// substituindo o aluno na variavel usada para imprimir na tela
+				aluno = alunos.get(pos);
+			}
+
+			System.out.println("Aluno " + aluno.getNome());
+			System.out.println("A média do aluno é: " + aluno.getMediaNota());
+			System.out.println("resultado: " + aluno.getAlunoAprovado2());
+			System.out.println(
+					"======================== FIM aluno " + aluno.getNome() + " ====================================");
+			// percorrendo a lista de discplina do aluno
+			for (Disciplina disc : aluno.getDisciplinas()) {
+				System.out.println("Materia: " + disc.getDisciplina() + " nota: " + disc.getNota());
+				System.out.println("======================== FIM aluno " + aluno.getNome()
+						+ " ====================================");
+			}
+		}
 
 		/*
-		 * apos criação da classe disciplina, pega o aluno, resgata, pega a disciplina
-		 * (getDisciplina()) e seta a
-		 * disciplina(setDisciplina1(JOptionPane.showInputDialog("Disciplina 1? "))) e a
-		 * nota (setNota1(Double.parseDouble(JOptionPane.showInputDialog("msg: ")));)
+		 * obsoleto // calculando aprovação System.out.println("Resultado: " +
+		 * aluno1.getAlunoAprovado()); // ou usando ternarios
+		 * System.out.println("Resultado: " + (aluno1.getAlunoAprovado() ? "Aprovado" :
+		 * "Reprovado")); // USANDO O SEGUNDO MÉTODO System.out.println("Resultado2: " +
+		 * aluno1.getAlunoAprovado2());
 		 */
-		/*
-		 * como foi gerado uma lista na classe Disciplina esse código fica obsoleto
-		 * aluno1.getDisciplina().setDisciplina1(JOptionPane.
-		 * showInputDialog("Disciplina 1? ")); aluno1.getDisciplina()
-		 * .setNota1(Double.parseDouble(JOptionPane.
-		 * showInputDialog("Digite nota da disciplina1: ")));
-		 * aluno1.getDisciplina().setDisciplina2(JOptionPane.
-		 * showInputDialog("Disciplina 2? ")); aluno1.getDisciplina()
-		 * .setNota2(Double.parseDouble(JOptionPane.
-		 * showInputDialog("Digite nota da disciplina2: ")));
-		 * aluno1.getDisciplina().setDisciplina3(JOptionPane.
-		 * showInputDialog("Disciplina 3? ")); aluno1.getDisciplina()
-		 * .setNota3(Double.parseDouble(JOptionPane.
-		 * showInputDialog("Digite nota da disciplina3: ")));
-		 * aluno1.getDisciplina().setDisciplina4(JOptionPane.
-		 * showInputDialog("Disciplina 4? ")); aluno1.getDisciplina()
-		 * .setNota4(Double.parseDouble(JOptionPane.
-		 * showInputDialog("Digite nota da disciplina4: ")));
-		 */
-
-		// mostrando os dados de João
-		/*
-		 * System.out.println("O nome é: "+ aluno1.getNome());//o get não se usa em
-		 * qualquer lugar System.out.println("A idade é: "+ aluno1.getIdade());// apena
-		 * para recuperar o dado System.out.println("A data de nascimento é: "+
-		 * aluno1.getDataNascimento()); System.out.println("O RG é: "+
-		 * aluno1.getRegistroGeral()); System.out.println("O CPF é: "+
-		 * aluno1.getNumeroCpf()); System.out.println("O nome da mãe é: "+
-		 * aluno1.getNomeMae()); System.out.println("O nome do pai é: "+
-		 * aluno1.getNomePai()); System.out.println("A matricula é: "+
-		 * aluno1.getDataMatricula()); System.out.println("O nome da escola é: "+
-		 * aluno1.getNomeEscola()); System.out.println("A serie matriculada é: "+
-		 * aluno1.getSerieMatriculada()); //mostrando media com 2 casas decimais no
-		 * printf onde % é um coringa onde entra a variavel
-		 * System.out.printf("A média das notas são: %.2f \n", aluno1.getMediaNota());
-		 */
-
-		// calculando aprovação
-		System.out.println("Resultado: " + aluno1.getAlunoAprovado());
-		// ou usando ternarios
-		System.out.println("Resultado: " + (aluno1.getAlunoAprovado() ? "Aprovado" : "Reprovado"));
-		// USANDO O SEGUNDO MÉTODO
-		System.out.println("Resultado2: " + aluno1.getAlunoAprovado2());
-
-		System.out.println(aluno1);
-		System.out.println("Amédia do aluno é: " + aluno1.getMediaNota());
-		System.out.println("resultado: " + aluno1.getAlunoAprovado2());
-		System.out.println(
-				"======================== FIM aluno " + aluno1.getNome() + " ====================================");
 
 		/*
 		 * Aluno aluno2 = new Aluno();//aluno pedro
