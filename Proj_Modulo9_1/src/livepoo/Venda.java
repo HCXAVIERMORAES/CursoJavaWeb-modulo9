@@ -21,11 +21,13 @@ public class Venda { /*é so uma classe, um objeto. A pricipal função de um objet
 	}
 	
 	//metodo para calcular o total da venda
-	public double totalVendas() {
+	private double totalVendas() {
 		double total = 0.0;
 		for (Produto produto : listaProdutos) {
 			total += produto.getValor().doubleValue();			
 		}
+		//formas de preencer a variavel valorTotal
+		//this.valorTotal = BigDecimal.valueOf(total);  com o public BigDecimal getValorTotal(), implementado a linha é desneecesaria
 		return total;
 	}
 	
@@ -63,7 +65,8 @@ public class Venda { /*é so uma classe, um objeto. A pricipal função de um objet
 	public void setEnderecoEntrrega(String enderecoEntrrega) {
 		this.enderecoEntrrega = enderecoEntrrega;
 	}
-	public BigDecimal getValorTotal() {
+	public BigDecimal getValorTotal() {//devido o metodo total vendas privado
+		this.valorTotal = BigDecimal.valueOf(totalVendas());
 		return valorTotal;
 	}
 	public void setValorTotal(BigDecimal valorTotal) {

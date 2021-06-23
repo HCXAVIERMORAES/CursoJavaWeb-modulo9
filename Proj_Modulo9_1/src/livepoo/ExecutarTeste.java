@@ -35,7 +35,7 @@ public class ExecutarTeste {
 		venda.setEnderecoEntrrega("Entrega pelo email");
 		venda.setId(10L);//Para identificar que é um long
 		venda.setNomeCliente("Paulo");
-		venda.setValorTotal(BigDecimal.valueOf(197.00));//convertendo para double
+		//venda.setValorTotal(BigDecimal.valueOf(197.00));//convertendo para double
 		
 		venda.getListaProdutos().add(produto1);//adicionando produto na lista de venda
 		venda.getListaProdutos().add(produto2);//não da para fazer validações
@@ -50,8 +50,11 @@ public class ExecutarTeste {
 		
 		//System.out.println("Descrição da : "+ venda.getDescricaoVenda());
 		//usando o tostring passando o objeto direto
-		System.out.println("Descrição da : " + venda);
-		System.out.println("Descrição da : " + venda.getDescricaoVenda() + "Total: "+ venda.totalVendas());
+		/*System.out.println("Descrição da : " + venda);
+		System.out.println("Descrição da : " + venda.getDescricaoVenda() + " Total: "+ venda.totalVendas());//direto*/
+		
+		/*A variavel valorTotal não foi setada seu retorna  é null*/
+		System.out.println("Valor da variavel total venda: "+ venda.getValorTotal());
 		
 	}
 
